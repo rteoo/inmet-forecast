@@ -1,7 +1,7 @@
 # inmet-forecast
 
 <p align="center">
-  <img src="docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
+  <img src="https://raw.githubusercontent.com/rteoo/inmet-forecast/v1.0.0/docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml"><img src="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml/badge.svg" alt="Publishing workflow status"></a>
   <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10 or later">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+  <a href="https://github.com/rteoo/inmet-forecast/blob/v1.0.0/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
 </p>
 
 Fetch forecasts by IBGE municipality code from Python or the command line.
@@ -30,7 +30,14 @@ chronological records without losing Portuguese descriptions or unknown fields.
 
 ## Quick start
 
-Install from a repository checkout:
+Install the published package:
+
+```powershell
+python -m pip install inmet-forecast==1.0.0
+python -m forecast 5218508
+```
+
+To develop from a repository checkout:
 
 ```powershell
 git clone https://github.com/rteoo/inmet-forecast.git
@@ -157,12 +164,13 @@ Before the first release:
 
 For later releases, update the package version before tagging. PyPI versions
 cannot be overwritten. The workflow deliberately fails on an existing version
-instead of silently skipping its upload. GitHub Actions execution and PyPI
-publication have not been verified from this local checkout.
+instead of silently skipping its upload. Version `1.0.0` was published on
+2026-10-07 after the release workflow passed all Python 3.10–3.14 tests, build
+checks, and PyPI Trusted Publishing.
 
 ## License
 
-This client is released under the [MIT License](LICENSE). Weather data remains
-attributed to INMET. The [project icon](docs/inmet-forecast-icon.png) is an
+This client is released under the [MIT License](https://github.com/rteoo/inmet-forecast/blob/v1.0.0/LICENSE). Weather data remains
+attributed to INMET. The [project icon](https://raw.githubusercontent.com/rteoo/inmet-forecast/v1.0.0/docs/inmet-forecast-icon.png) is an
 independent weather mark; its design reference and generation prompt are recorded
-in [docs/README.md](docs/README.md).
+in [docs/README.md](https://github.com/rteoo/inmet-forecast/blob/v1.0.0/docs/README.md).
