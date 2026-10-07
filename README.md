@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/rteoo/inmet-forecast/actions/workflows/pypi.yml"><img src="https://github.com/rteoo/inmet-forecast/actions/workflows/pypi.yml/badge.svg" alt="Publishing workflow status"></a>
+  <a href="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml"><img src="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml/badge.svg" alt="Publishing workflow status"></a>
   <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10 or later">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
 </p>
@@ -139,7 +139,7 @@ systems have not been exercised locally.
 
 ## Publishing to PyPI
 
-`.github/workflows/pypi.yml` publishes when a GitHub release is published. It tests
+`.github/workflows/publish.yml` publishes when a GitHub release is published. It tests
 the installed package on Python 3.10 through 3.14, checks lint and formatting,
 builds and validates a wheel and source distribution, then uploads those same
 artifacts using [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/).
@@ -151,7 +151,7 @@ Before the first release:
    and restrict its deployment tags to `v*` where the repository plan permits.
 2. Register a [pending PyPI publisher](https://pypi.org/manage/account/publishing/)
    with project name `inmet-forecast`, owner `rteoo`, repository `inmet-forecast`,
-   workflow filename `pypi.yml`, and environment `pypi`.
+   workflow filename `publish.yml`, and environment `pypi`.
 3. Publish a GitHub release whose tag exactly matches `v` plus the version in
    `pyproject.toml`, initially `v0.1.0`. The tagged commit must contain the workflow.
 
