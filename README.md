@@ -153,7 +153,7 @@ Before the first release:
    with project name `inmet-forecast`, owner `rteoo`, repository `inmet-forecast`,
    workflow filename `publish.yml`, and environment `pypi`.
 3. Publish a GitHub release whose tag exactly matches `v` plus the version in
-   `pyproject.toml`, initially `v0.1.0`. The tagged commit must contain the workflow.
+   `pyproject.toml`, currently `v1.0.0`. The tagged commit must contain the workflow.
 
 For later releases, update the package version before tagging. PyPI versions
 cannot be overwritten. The workflow deliberately fails on an existing version

@@ -37,7 +37,7 @@ class InmetClient:
         selected = municipality_code(code)
         request = Request(
             f"{FORECAST_BASE_URL}/previsao/{selected}",
-            headers={"Accept": "application/json", "User-Agent": "inmet-forecast/0.1.0"},
+            headers={"Accept": "application/json", "User-Agent": "inmet-forecast/1.0.0"},
             method="GET",
         )
         try:
