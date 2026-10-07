@@ -25,4 +25,7 @@ ordinary test suite. After packaging changes, install the wheel in a disposable
 environment and exercise the installed import and CLI; clean up that environment.
 
 Use task branches and focused local commits. Generated build outputs and caches
-are ignored. This repository has no configured remote or publication workflow.
+are ignored. The remote is `rteoo/inmet-forecast`. The PyPI publishing workflow is
+`.github/workflows/publish.yml`; its environment and Trusted Publisher setup are
+documented in README.md. Keep ordinary tests offline and publishing credentials
+out of the build jobs.

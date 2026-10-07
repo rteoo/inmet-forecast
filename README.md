@@ -1,16 +1,56 @@
 # inmet-forecast
 
-A pip-installable Python client for INMET's Brazilian municipality forecasts.
-Python 3.10+; no third-party runtime dependencies.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rteoo/inmet-forecast/v1.0.0/docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
+</p>
 
-## Install locally
+<p align="center">
+  A dependency-free Python client for INMET's Brazilian municipality forecasts,
+  with raw API data, normalized records, and a JSON command line.
+</p>
+
+<p align="center">
+  <a href="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml"><img src="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml/badge.svg" alt="Publishing workflow status"></a>
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10 or later">
+  <a href="https://github.com/rteoo/inmet-forecast/blob/v1.0.0/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+</p>
+
+Fetch forecasts by IBGE municipality code from Python or the command line.
+Keep INMET's original JSON or turn its period-based and daily entries into
+chronological records without losing Portuguese descriptions or unknown fields.
+
+## Highlights
+
+- Municipality forecasts from INMET's forecast API, including temperature,
+  humidity, wind, weather descriptions, sunrise, and sunset when supplied.
+- Raw responses and normalized morning, afternoon, night, and daily records.
+- UTF-8 JSON output through `inmet-forecast` or `python -m forecast`.
+- Configurable socket timeouts, bounded responses, and specific error classes.
+- Python 3.10 or later, using only the standard library at runtime.
+
+## Quick start
+
+Install the published package:
 
 ```powershell
-python -m pip install C:\Users\rodri\Projects\inmet-forecast
+python -m pip install inmet-forecast==1.0.0
+python -m forecast 5218508
 ```
 
-This repository is local. It has not been published to PyPI; `pip install inmet-forecast`
-is not the installation command for this checkout.
+To develop from a repository checkout:
+
+```powershell
+git clone https://github.com/rteoo/inmet-forecast.git
+cd inmet-forecast
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install .
+python -m forecast 5218508
+```
+
+Use `python -m pip install -e .` for an editable development install. The
+distribution and console command are named `inmet-forecast`; the Python import
+is `forecast`. The example uses Quirinópolis, Goiás, municipality code `5218508`.
 
 ## Python
 
@@ -103,3 +143,34 @@ The installed CLI fetched nine forecast rows for Quirinópolis. October 7's
 afternoon forecast matched 19–36°C, 30–90% humidity, light NE-E winds, and the
 portal's showers/thunderstorms description. Other Python versions and operating
 systems have not been exercised locally.
+
+## Publishing to PyPI
+
+`.github/workflows/publish.yml` publishes when a GitHub release is published. It tests
+the installed package on Python 3.10 through 3.14, checks lint and formatting,
+builds and validates a wheel and source distribution, then uploads those same
+artifacts using [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/).
+No PyPI API token is needed. A manual workflow run performs validation only.
+
+Before the first release:
+
+1. Create the GitHub repository environment `pypi`. Configure required reviewers
+   and restrict its deployment tags to `v*` where the repository plan permits.
+2. Register a [pending PyPI publisher](https://pypi.org/manage/account/publishing/)
+   with project name `inmet-forecast`, owner `rteoo`, repository `inmet-forecast`,
+   workflow filename `publish.yml`, and environment `pypi`.
+3. Publish a GitHub release whose tag exactly matches `v` plus the version in
+   `pyproject.toml`, currently `v1.0.0`. The tagged commit must contain the workflow.
+
+For later releases, update the package version before tagging. PyPI versions
+cannot be overwritten. The workflow deliberately fails on an existing version
+instead of silently skipping its upload. Version `1.0.0` was published on
+2026-10-07 after the release workflow passed all Python 3.10–3.14 tests, build
+checks, and PyPI Trusted Publishing.
+
+## License
+
+This client is released under the [MIT License](https://github.com/rteoo/inmet-forecast/blob/v1.0.0/LICENSE). Weather data remains
+attributed to INMET. The [project icon](https://raw.githubusercontent.com/rteoo/inmet-forecast/v1.0.0/docs/inmet-forecast-icon.png) is an
+independent weather mark; its design reference and generation prompt are recorded
+in [docs/README.md](https://github.com/rteoo/inmet-forecast/blob/v1.0.0/docs/README.md).

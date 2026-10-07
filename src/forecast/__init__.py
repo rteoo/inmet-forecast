@@ -4,7 +4,7 @@ from .client import InmetClient, fetch_forecast
 from .errors import InmetError, InmetHTTPError, InmetNetworkError, InmetResponseError
 from .forecast import normalize_forecast
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 __all__ = [
     "InmetClient",
     "InmetError",
