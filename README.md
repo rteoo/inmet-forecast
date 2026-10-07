@@ -1,7 +1,5 @@
-# inmet-forecast
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/rteoo/inmet-forecast/v1.0.0/docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
+  <img src="https://raw.githubusercontent.com/rteoo/inmet-forecast/main/docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
 </p>
 
 <p align="center">
