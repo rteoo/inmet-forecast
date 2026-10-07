@@ -1,16 +1,49 @@
 # inmet-forecast
 
-A pip-installable Python client for INMET's Brazilian municipality forecasts.
-Python 3.10+; no third-party runtime dependencies.
+<p align="center">
+  <img src="docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
+</p>
 
-## Install locally
+<p align="center">
+  A dependency-free Python client for INMET's Brazilian municipality forecasts,
+  with raw API data, normalized records, and a JSON command line.
+</p>
+
+<p align="center">
+  <a href="https://github.com/rteoo/inmet-forecast/actions/workflows/pypi.yml"><img src="https://github.com/rteoo/inmet-forecast/actions/workflows/pypi.yml/badge.svg" alt="Publishing workflow status"></a>
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10 or later">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+</p>
+
+Fetch forecasts by IBGE municipality code from Python or the command line.
+Keep INMET's original JSON or turn its period-based and daily entries into
+chronological records without losing Portuguese descriptions or unknown fields.
+
+## Highlights
+
+- Municipality forecasts from INMET's forecast API, including temperature,
+  humidity, wind, weather descriptions, sunrise, and sunset when supplied.
+- Raw responses and normalized morning, afternoon, night, and daily records.
+- UTF-8 JSON output through `inmet-forecast` or `python -m forecast`.
+- Configurable socket timeouts, bounded responses, and specific error classes.
+- Python 3.10 or later, using only the standard library at runtime.
+
+## Quick start
+
+Install from a repository checkout:
 
 ```powershell
-python -m pip install C:\Users\rodri\Projects\inmet-forecast
+git clone https://github.com/rteoo/inmet-forecast.git
+cd inmet-forecast
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install .
+python -m forecast 5218508
 ```
 
-This repository is local. It has not been published to PyPI; `pip install inmet-forecast`
-is not the installation command for this checkout.
+Use `python -m pip install -e .` for an editable development install. The
+distribution and console command are named `inmet-forecast`; the Python import
+is `forecast`. The example uses Quirinópolis, Goiás, municipality code `5218508`.
 
 ## Python
 
@@ -126,3 +159,10 @@ For later releases, update the package version before tagging. PyPI versions
 cannot be overwritten. The workflow deliberately fails on an existing version
 instead of silently skipping its upload. GitHub Actions execution and PyPI
 publication have not been verified from this local checkout.
+
+## License
+
+This client is released under the [MIT License](LICENSE). Weather data remains
+attributed to INMET. The [project icon](docs/inmet-forecast-icon.png) is an
+independent weather mark; its design reference and generation prompt are recorded
+in [docs/README.md](docs/README.md).
