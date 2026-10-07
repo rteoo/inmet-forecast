@@ -31,7 +31,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         )
     except (InmetError, ValueError) as error:
-        print(f"inmetpy: {error}", file=sys.stderr)
+        print(f"inmet-forecast: {error}", file=sys.stderr)
         return 1
     # Emit UTF-8 on Windows too, including when stdout is redirected.
     if hasattr(sys.stdout, "reconfigure"):

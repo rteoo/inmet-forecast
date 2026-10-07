@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "inmetpy"
+name = "inmet-forecast"
 version = "0.1.0"
 description = "A dependency-free Python client for INMET municipality forecasts"
 readme = "README.md"
@@ -20,13 +20,13 @@ classifiers = [
 ]
 
 [project.scripts]
-inmetpy = "inmetpy.cli:main"
+inmet-forecast = "inmet_forecast.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-inmetpy = ["py.typed"]
+inmet_forecast = ["py.typed"]
 
 [tool.ruff]
 target-version = "py310"

@@ -1,4 +1,4 @@
-# inmetpy
+# inmet-forecast
 
 A pip-installable Python client for INMET's Brazilian municipality forecasts.
 Python 3.10+; no third-party runtime dependencies.
@@ -6,16 +6,16 @@ Python 3.10+; no third-party runtime dependencies.
 ## Install locally
 
 ```powershell
-python -m pip install C:\Users\rodri\Projects\inmetpy
+python -m pip install C:\Users\rodri\Projects\inmet-forecast
 ```
 
-This repository is local. It has not been published to PyPI; `pip install inmetpy`
+This repository is local. It has not been published to PyPI; `pip install inmet-forecast`
 is not the installation command for this checkout.
 
 ## Python
 
 ```python
-from inmetpy import InmetClient, fetch_forecast, normalize_forecast
+from inmet_forecast import InmetClient, fetch_forecast, normalize_forecast
 
 # Quirinópolis, Goiás (IBGE municipality code).
 raw = fetch_forecast(5218508, timeout=20)
@@ -44,9 +44,9 @@ Dates arrive from INMET as `DD/MM/YYYY`.
 ## Command line
 
 ```powershell
-inmetpy 5218508
-python -m inmetpy 5218508 --timeout 30
-python -m inmetpy 5218508 --raw
+inmet-forecast 5218508
+python -m inmet_forecast 5218508 --timeout 30
+python -m inmet_forecast 5218508 --raw
 ```
 
 Default output is normalized UTF-8 JSON. `--raw` includes all original fields
