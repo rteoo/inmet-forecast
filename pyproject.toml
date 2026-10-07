@@ -20,13 +20,13 @@ classifiers = [
 ]
 
 [project.scripts]
-inmet-forecast = "inmet_forecast.cli:main"
+inmet-forecast = "forecast.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-inmet_forecast = ["py.typed"]
+forecast = ["py.typed"]
 
 [tool.ruff]
 target-version = "py310"

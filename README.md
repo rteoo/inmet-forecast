@@ -15,7 +15,7 @@ is not the installation command for this checkout.
 ## Python
 
 ```python
-from inmet_forecast import InmetClient, fetch_forecast, normalize_forecast
+from forecast import InmetClient, fetch_forecast, normalize_forecast
 
 # Quirinópolis, Goiás (IBGE municipality code).
 raw = fetch_forecast(5218508, timeout=20)
@@ -45,8 +45,8 @@ Dates arrive from INMET as `DD/MM/YYYY`.
 
 ```powershell
 inmet-forecast 5218508
-python -m inmet_forecast 5218508 --timeout 30
-python -m inmet_forecast 5218508 --raw
+python -m forecast 5218508 --timeout 30
+python -m forecast 5218508 --raw
 ```
 
 Default output is normalized UTF-8 JSON. `--raw` includes all original fields

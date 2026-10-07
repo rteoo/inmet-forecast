@@ -8,7 +8,7 @@ from contextlib import contextmanager, redirect_stderr, redirect_stdout
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from unittest.mock import patch
 
-from inmet_forecast import (
+from forecast import (
     InmetClient,
     InmetHTTPError,
     InmetNetworkError,
@@ -16,7 +16,7 @@ from inmet_forecast import (
     fetch_forecast,
     normalize_forecast,
 )
-from inmet_forecast.cli import main
+from forecast.cli import main
 
 CODE = "5218508"
 
@@ -76,9 +76,7 @@ def serve(body, *, status=200, content_type="application/json", delay=0, truncat
     thread = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.01})
     thread.start()
     try:
-        with patch(
-            "inmet_forecast.client.FORECAST_BASE_URL", f"http://127.0.0.1:{server.server_port}"
-        ):
+        with patch("forecast.client.FORECAST_BASE_URL", f"http://127.0.0.1:{server.server_port}"):
             yield requests
     finally:
         server.shutdown()
@@ -141,12 +139,12 @@ class ClientTests(unittest.TestCase):
                 fetch_forecast(CODE)
 
     def test_response_size_limit(self):
-        with patch("inmet_forecast.client.MAX_RESPONSE_BYTES", 8), serve(b"123456789"):
+        with patch("forecast.client.MAX_RESPONSE_BYTES", 8), serve(b"123456789"):
             with self.assertRaisesRegex(InmetResponseError, "limit"):
                 fetch_forecast(CODE)
 
     def test_invalid_inputs_make_no_request(self):
-        with patch("inmet_forecast.client.urlopen") as opener:
+        with patch("forecast.client.urlopen") as opener:
             for code in (True, None, 1.0, "5218508/x", "１２３４５６７", "", "123456"):
                 with self.subTest(code=code), self.assertRaises(ValueError):
                     fetch_forecast(code)
@@ -215,14 +213,14 @@ class NormalizationTests(unittest.TestCase):
 
 class CLITests(unittest.TestCase):
     def test_normalized_and_raw_cli_json(self):
-        with patch("inmet_forecast.cli.fetch_forecast", return_value=forecast()):
+        with patch("forecast.cli.fetch_forecast", return_value=forecast()):
             for extra, expected in [([], normalize_forecast(forecast())), (["--raw"], forecast())]:
                 with self.subTest(extra=extra), redirect_stdout(io.StringIO()) as output:
                     self.assertEqual(main([CODE, *extra]), 0)
                     self.assertEqual(json.loads(output.getvalue()), expected)
 
     def test_cli_failure_returns_nonzero_without_traceback(self):
-        with patch("inmet_forecast.cli.fetch_forecast", side_effect=InmetHTTPError(429)):
+        with patch("forecast.cli.fetch_forecast", side_effect=InmetHTTPError(429)):
             with redirect_stderr(io.StringIO()) as error, redirect_stdout(io.StringIO()) as output:
                 self.assertEqual(main([CODE]), 1)
                 self.assertIn("HTTP 429", error.getvalue())
