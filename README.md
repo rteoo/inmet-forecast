@@ -103,3 +103,26 @@ The installed CLI fetched nine forecast rows for Quirinópolis. October 7's
 afternoon forecast matched 19–36°C, 30–90% humidity, light NE-E winds, and the
 portal's showers/thunderstorms description. Other Python versions and operating
 systems have not been exercised locally.
+
+## Publishing to PyPI
+
+`.github/workflows/pypi.yml` publishes when a GitHub release is published. It tests
+the installed package on Python 3.10 through 3.14, checks lint and formatting,
+builds and validates a wheel and source distribution, then uploads those same
+artifacts using [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/).
+No PyPI API token is needed. A manual workflow run performs validation only.
+
+Before the first release:
+
+1. Create the GitHub repository environment `pypi`. Configure required reviewers
+   and restrict its deployment tags to `v*` where the repository plan permits.
+2. Register a [pending PyPI publisher](https://pypi.org/manage/account/publishing/)
+   with project name `inmet-forecast`, owner `rteoo`, repository `inmet-forecast`,
+   workflow filename `pypi.yml`, and environment `pypi`.
+3. Publish a GitHub release whose tag exactly matches `v` plus the version in
+   `pyproject.toml`, initially `v0.1.0`. The tagged commit must contain the workflow.
+
+For later releases, update the package version before tagging. PyPI versions
+cannot be overwritten. The workflow deliberately fails on an existing version
+instead of silently skipping its upload. GitHub Actions execution and PyPI
+publication have not been verified from this local checkout.
