@@ -86,7 +86,8 @@ jobs:
 
   publish:
     name: Publish with PyPI Trusted Publishing
-    if: github.event_name == 'release'
+    # Prereleases never reach PyPI: only a final release publishes.
+    if: github.event_name == 'release' && !github.event.release.prerelease
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
