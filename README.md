@@ -1,3 +1,5 @@
+# inmet-forecast
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/rteoo/inmet-forecast/main/docs/inmet-forecast-icon.png" width="128" alt="inmet-forecast weather icon: sun, cloud, and rain">
 </p>
@@ -9,6 +11,8 @@
 
 <p align="center">
   <a href="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml"><img src="https://github.com/rteoo/inmet-forecast/actions/workflows/publish.yml/badge.svg" alt="Publishing workflow status"></a>
+  <a href="https://github.com/rteoo/inmet-forecast/tags"><img src="https://img.shields.io/github/v/tag/rteoo/inmet-forecast?label=stable" alt="Stable tag"></a>
+  <a href="https://pypi.org/project/inmet-forecast/"><img src="https://img.shields.io/pypi/v/inmet-forecast.svg" alt="PyPI version"></a>
   <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10 or later">
   <a href="https://github.com/rteoo/inmet-forecast/blob/v1.0.0/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
 </p>
@@ -120,7 +124,7 @@ rate-limit, uptime, or schema guarantee. This project is an independent client
 and is not affiliated with INMET. Data remains attributed to INMET; the MIT
 license covers this client code, not a grant of rights over third-party data.
 
-## Development
+## Develop and build
 
 Tests use the standard library and a local HTTP server; they never call INMET.
 
