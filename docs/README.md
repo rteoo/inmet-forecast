@@ -1,33 +1,20 @@
 # Project artwork
 
-`inmet-forecast-icon.png` is the project icon used in the repository README.
-It depicts a cyan cloud, orange sun, and rain on a rounded navy tile. It is an
-independent project mark and does not reproduce INMET's official identity.
+`inmet-forecast-icon.svg` is the icon's source: a cloud with rain and an orange
+sun on a rounded navy tile. `inmet-forecast-icon.png` is its 1024-pixel render,
+used by the repository README and the PyPI page. It is an independent project
+mark and does not reproduce INMET's official identity.
 
-The README layout and icon design language were referenced from
-[homeassistantpy](https://github.com/rteoo/homeassistantpy), whose README currently
-identifies the project as Homepy. Its icon uses a navy rounded tile, cyan glyph,
-and warm accent. The weather subject is original to this project.
+The icon follows the personal-project icon family shared with
+[homeassistantpy](https://github.com/rteoo/homeassistantpy) and
+[bcbpy](https://github.com/rteoo/bcbpy): a navy tile graded through the Teô
+Personal Design System's navy-500, navy-600 and navy-900, a pictogram in its
+paper-100 to navy-300 gradient, and a single orange-500 accent, here the sun.
+The SVG was drawn by hand on 2026-10-16, replacing the earlier generated raster.
 
-Generated on 2026-10-07 using the built-in image generation tool. The PNG is kept
-as generated, including its transparent background. No tracing, recoloring, or
-resizing was applied. The README displays it at 128 pixels wide.
-
-## Generation prompt
+To regenerate the PNG, render the SVG at 1024 by 1024 with a transparent
+background, for example with headless Microsoft Edge:
 
 ```text
-Use case: logo-brand. Create one finished square repository icon for
-inmet-forecast, an independent Python client for Brazilian weather forecasts.
-Match this sibling icon design language: a deep navy rounded-square tile with
-generous rounded corners, subtle blue gradient from #16408a at top to #081a40
-at bottom, fine blue rim and a gentle top sheen; bold simple cyan #5ee7f5 to blue
-#2a9df4 glyph with a small warm orange #ff8a2a accent. Main glyph: a clean,
-immediately recognizable rounded cyan cloud with a warm sun partly emerging
-behind its upper right edge and three short cyan rain strokes below. Polished
-restrained dimensional depth, crisp simple geometric shapes, large readable
-silhouette at 128px, straight front view, centered balanced composition. Tile
-occupies about 88% of square canvas, exterior genuinely transparent. No text,
-letters, Python snakes, maps, official government marks, extra objects, mockup,
-watermark or background scene. This is an original weather mark, not the INMET
-official logo.
+msedge --headless=new --disable-gpu --hide-scrollbars --default-background-color=00000000 --window-size=1024,1024 --screenshot=inmet-forecast-icon.png inmet-forecast-icon.svg
 ```
